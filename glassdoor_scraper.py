@@ -18,6 +18,7 @@ def fetch_jobs(keyword, num_pages):
     driver.set_window_size(1120, 1000)
     
     url = "https://www.glassdoor.co.in/Job/Home/recentActivity.htm"
+    # url = "https://www.glassdoor.co.in/Job/data-scientist-jobs-SRCH_KO0,14_IP5.htm"
     driver.get(url)
     search_input = driver.find_element_by_id("sc.keyword")
     search_input.send_keys(keyword)
@@ -39,6 +40,23 @@ def fetch_jobs(keyword, num_pages):
     company_industry = []
     company_founded = []
     company_revenue = []
+    company_rating = []
+    
+    df = pd.DataFrame({
+    'Job Title': job_title,
+    'Salary Estimate': salary_estimate,
+    'Job Description': job_description,
+    'Rating' : company_rating,
+    'Company Name"': company_name, 
+    'Location': location,
+    'Size': company_size,
+    'Founded' : company_founded,
+    'Type of ownership': company_type,
+    'Industry' : company_industry,
+    'Sector': company_sector,
+    'Revenue': company_revenue
+    })
+    
     
     
     
@@ -87,6 +105,12 @@ def fetch_jobs(keyword, num_pages):
                 except:
                     company_name.append("#N/A")
                     pass
+                
+                try:
+                    company_rating.append(driver.find_element_by_xpath("//div[@class='mr-sm css-ey2fjr e1pr2f4f3']").text)
+                except:
+                    company_rating.append("#N/A")
+                    pass
 
                 try:
                     job_title.append(driver.find_element_by_xpath("//div[@class='css-1j389vi e1tk4kwz2']").text)
@@ -111,7 +135,7 @@ def fetch_jobs(keyword, num_pages):
                 except:
                     salary_estimate.append("#N/A")
                     pass
-                
+                            
                 try:
                     company_size.append(driver.find_element_by_xpath("//div[@id='CompanyContainer']//span[text()='Size']//following-sibling::*").text)
                 except:
@@ -157,25 +181,28 @@ def fetch_jobs(keyword, num_pages):
         if done:
             print(str(current_page) + ' ' + 'out of' +' '+ str(num_pages) + ' ' + 'pages done')
             driver.find_element_by_xpath("//span[@alt='next-icon']").click()   
+            df = pd.DataFrame({
+            'Job Title': job_title,
+            'Salary Estimate': salary_estimate,
+            'Job Description': job_description,
+            'Rating' : company_rating,
+            'Company Name"': company_name, 
+            'Location': location,
+            'Size': company_size,
+            'Founded' : company_founded,
+            'Type of ownership': company_type,
+            'Industry' : company_industry,
+            'Sector': company_sector,
+            'Revenue': company_revenue
+            })
+            df.to_csv(keyword + '.csv')
+    
             current_page = current_page + 1
             time.sleep(4)
             
-
-
-
-
     driver.close()
-    df = pd.DataFrame({'company': company_name, 
-    'job title': job_title,
-    'location': location,
-    'job description': job_description,
-    'salary estimate': salary_estimate,
-    'company_size': company_size,
-    'company_type': company_type,
-    'company_sector': company_sector,
-    'company_industry' : company_industry, 'company_founded' : company_founded, 'company_revenue': company_revenue})
-    
+
+  
     df.to_csv(keyword + '.csv')
     
-fetch_jobs("Data Scientist", 2)
                        

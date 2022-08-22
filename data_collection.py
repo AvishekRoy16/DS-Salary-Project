@@ -1,4 +1,6 @@
 import glassdoor_scraper as gs 
 import pandas as pd 
 
-print(gs.df.head())
+gs.fetch_jobs("Data Scientist", 30)
+
+# 23 done
