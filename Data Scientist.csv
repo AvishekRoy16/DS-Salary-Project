@@ -1,4 +1,4 @@
-,Job Title,Salary Estimate,Job Description,Rating,"Company Name""",Location,Size,Founded,Type of ownership,Industry,Sector,Revenue
+,Job Title,Salary Estimate,Job Description,Rating,Company Name,Location,Size,Founded,Type of ownership,Industry,Sector,Revenue
 0,Data Scientist,"₹9,96,452 /yr (est.)","Data Science Analyst
 Qualification : BE, MBA
 · Domain knowledge of the blockchain segment (preferable)
@@ -117,7 +117,7 @@ Experience visualizing/presenting data for stakeholders using: Tableau, PowerBI,
 Professional Skill Requirements
 Strong leadership and management skills
 Strong communication and interpersonal skills
-Strong analytical and problem-solving skills and passion for product development
+Strong analytical and problem-solving skills and passion for product development,,,,,,z
 Strong understanding of Agile methodologies and open to working in agile environments with multiple stakeholders
 Professional attitude and service orientation; team player
 Ability to translate business needs into potential analytics solution
