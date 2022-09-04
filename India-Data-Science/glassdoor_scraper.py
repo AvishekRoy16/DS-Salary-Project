@@ -12,7 +12,7 @@ def fetch_jobs(keyword, num_pages):
     options = Options()
     options.add_argument("window-size=1920,1080")
     #Enter your chromedriver.exe path below
-    path = "/mnt/D/Tech Projects/DS-Salary-Project/chromedriver"
+    path = "/mnt/D/Tech Projects/DS-Salary-Project/India-Data-Science/chromedriver"
     driver = webdriver.Chrome(executable_path=path, options=options)
     driver.set_window_size(1120, 1000)
     
