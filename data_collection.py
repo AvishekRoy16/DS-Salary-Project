@@ -1,6 +1,15 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr  2 11:47:44 2020
+
+@author: Ken
+"""
+
 import glassdoor_scraper as gs 
 import pandas as pd 
 
-gs.fetch_jobs("Data Scientist", 30)
+path = "C:/Users/Ken/Documents/ds_salary_proj/chromedriver"
 
-# 23 done
+df = gs.get_jobs(1000, False, path, 15)
+
+df.to_csv('glassdoor_jobs.csv', index = False)
