@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local environments and configuration
+.venv/
+venv/
+.env
+
+# Generated model and browser artifacts
+*.p
+*.h5
+chromedriver
+chromedriver.exe
